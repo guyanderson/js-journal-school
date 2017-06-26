@@ -16,16 +16,16 @@ gulp.task('concatInterface', function(){
   .pipe(gulp.dest('./tmp'));
 });
 
+gulp.task('minifyScripts', ['jsBrowserify'], function(){
+  return gulp.src('./build/js/app.js')
+  .pipe(uglify())
+  .pipe(gulp.dest('./build/js'));
+});
+
 gulp.task('jsBrowserify', ['concatInterface'], function(){
   return browserify({ entries: ['./tmp/allConcat.js'] })
   .bundle()
   .pipe(source('app.js'))
-  .pipe(gulp.dest('./build/js'));
-});
-
-gulp.task('minifyScripts', ['jsBrowserify'], function(){
-  return gulp.src('./build/js/app.js')
-  .pipe(uglify())
   .pipe(gulp.dest('./build/js'));
 });
 

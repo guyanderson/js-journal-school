@@ -9,6 +9,36 @@ Entry.prototype.journalCount = function(){
     return bodyCount;
 };
 
+Entry.prototype.vowelCount = function(){
+  var vowelArray = ['a', 'e', 'i', 'o', 'u'];
+  var bodyChar = this.body.split('');
+  var vowelCount = 0;
+  for(var i = 0; i <= bodyChar.length; i++){
+    if(bodyChar[i] === 'a' || bodyChar[i] === 'e' || bodyChar[i] === 'i' || bodyChar[i] === 'o' || bodyChar[i] === 'u')
+    {
+      vowelCount += 1;
+    }
+  }
+  return vowelCount;
+};
+
+Entry.prototype.teaser = function(){
+  var sentenceArray = this.body.split(".");
+  var sentenceSplit = sentenceArray[0].split(' ');
+  var teaseLimit = "";
+  if(sentenceSplit.length >= 8){
+    for(var i = 0; i <= 8; i++){
+      teaseLimit += sentenceSplit[i] + " ";
+    }
+  } else {
+    for(var k = 0; k <= sentenceSplit.length -1; k++){
+      teaseLimit += sentenceSplit[k] + " ";
+    }
+    alert(teaseLimit);
+  }
+  return teaseLimit;
+};
+
 exports.journalModule = Entry;
 
 },{}],2:[function(require,module,exports){
@@ -21,8 +51,12 @@ $(document).ready(function(){
        var body = $('#body').val();
        var newEntry = new Entry(title, body);
        var wordOut = newEntry.journalCount();
+       var vowelOut = newEntry.vowelCount();
+       var teaserOut = newEntry.teaser();
        $('#journal-out').append('<p>Title: ' + title + '</p><p>'  + body + '</p>');
        $('#wordCount').append('<p>Word count: ' + wordOut + '</p>');
+       $('#vowelCount').append('<p>Vowel count: ' + vowelOut + '</p>');
+       $('#teaser').append('<p>Teaser: ' + teaserOut + '</p>');
 
    });
 });

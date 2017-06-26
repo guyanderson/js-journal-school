@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="content/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <meta charset="utf-8">
     <title>Journal</title>
   </head>
   <body>
+        <div class="container">
+
+          <h3>Well look at the time! </h3>
+          <h3 id="time"></h3>
+
           <form  id="journal-entry">
               <div class="form-group">
                   <label for="title">Enter a title for your journal entry:</label>
@@ -39,6 +45,6 @@
           <div  class="teas">
               <p id="teaser"></p>
           </div>
-
+        </div>
       </body>
   </html>
